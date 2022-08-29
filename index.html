@@ -10,13 +10,37 @@
     <title>Weather Forecast</title>
 </head>
 
-<body class="row">
-    <h1 class="header col-12" >Weather Forecast</h1>
-    <form>
-        <input type="text" id="citySearch">
-    </form>
-    <button class=" btn btn-primary search col-1">Search</button>
-
+<body>
+    <main class="container">
+        <section class="row">
+            <div class="col-12 col-md-3">
+                <form class="card p-3 m-3">
+                    <input id="input" class="form-control mb-3" type="search" placeholder="Search City">
+                    <button class="btn btn-primary" id="searchCity" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="card p-3 m-3" id="currentWeather"></div>
+                <div class="row">
+                    <div class="col-12 col-md">
+                        <div class="card p-3 m-3"></div>
+                    </div>
+                    <div class="col-12 col-md">
+                        <div class="card p-3 m-3"></div>
+                    </div>
+                    <div class="col-12 col-md">
+                        <div class="card p-3 m-3"></div>
+                    </div>
+                    <div class="col-12 col-md">
+                        <div class="card p-3 m-3"></div>
+                    </div>
+                    <div class="col-12 col-md">
+                        <div class="card p-3 m-3"></div>
+                    </div>
+            </div>
+            </div>
+        </section>
+    </main>
 
 
     <script src="./assets/script.js"></script>
