@@ -1,5 +1,6 @@
 var searchEl = document.querySelector('#searchCity')
 var buttons = document.querySelector('#pastSearch')
+var fiveDays = document.querySelector('#fiveDayForecast')
 var appid = '692efab00ae66e9f48137e6ea4766fcd'
 
 var toJSON = function(response){
@@ -24,6 +25,29 @@ var displayWeather = function(data, city){
     currentWeatherEl.appendChild(windEl)
     currentWeatherEl.appendChild(uviEl)
 
+    var fiveDayForecast = data.daily.slice(1,6);
+    fiveDays.innerHTML = null
+    for(var day of fiveDayForecast){
+        console.log('Day', day)
+        var dates = new Date(day.dt *1000).toLocaleDateString();
+        var temps = day.temp.day
+        var collumn = document.createElement('div')
+        var card = document.createElement('div')
+        var date = document.createElement('p')
+        date.textContent = dates
+        var temp = document.createElement('p')
+        temp.textContent= 'Temp: '+ temps
+        var imgEl = document.createElement('img')
+        imgEl.alt = icon
+        imgEl.src =  'http://openweathermap.org/img/wn/'+icon+'@2x.png'
+        collumn.className = 'col-12 col-md'
+        card.className = 'card p-3 m-3'
+        fiveDays.appendChild(collumn)
+        collumn.appendChild(card)
+        card.appendChild(date)
+        card.appendChild(imgEl)
+        card.appendChild(temp)
+    }
 }
 var displayBtn = function(cities){
     var citySaved = JSON.parse(localStorage.getItem('cities')) || [];
