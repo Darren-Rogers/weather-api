@@ -41,7 +41,7 @@ var displayWeather = function(data, city){
         temp.textContent= 'Temp: '+ temps
         var imgEl = document.createElement('img')
         imgEl.alt = icon
-        imgEl.src =  'http://openweathermap.org/img/wn/'+icon+'@2x.png'
+        imgEl.src =  'https://openweathermap.org/img/wn/'+icon+'@2x.png'
         collumn.className = 'col-12 col-md'
         card.className = 'card p-3 m-3'
         fiveDays.appendChild(collumn)
@@ -91,7 +91,7 @@ var getGeo = function(locations){
 var handler = function(event){
     event.preventDefault()
     var q = document.querySelector('#input')
-    var geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${q.value}&appid=${appid}`;
+    var geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${q.value}&appid=${appid}`;
     fetch(geoURL)
         .then(toJSON)
         .then(getGeo)
