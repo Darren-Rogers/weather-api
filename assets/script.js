@@ -1,6 +1,7 @@
 var searchEl = document.querySelector('#searchCity')
 var buttons = document.querySelector('#pastSearch')
 var fiveDays = document.querySelector('#fiveDayForecast')
+var currentWeather = document.querySelector('#currentWeather')
 var appid = '692efab00ae66e9f48137e6ea4766fcd'
 
 var toJSON = function(response){
@@ -31,6 +32,7 @@ var displayWeather = function(data, city){
         console.log('Day', day)
         var dates = new Date(day.dt *1000).toLocaleDateString();
         var temps = day.temp.day
+        var icon = day.weather[0].icon
         var collumn = document.createElement('div')
         var card = document.createElement('div')
         var date = document.createElement('p')
@@ -52,7 +54,7 @@ var displayWeather = function(data, city){
 var displayBtn = function(cities){
     var citySaved = JSON.parse(localStorage.getItem('cities')) || [];
     buttons.innerHTML = null
-
+    currentWeather.innerHTML= null
     for(var city of citySaved){
         var btnEl = document.createElement('button')
         btnEl.textContent = city
@@ -97,6 +99,7 @@ var handler = function(event){
 var handleCity = function(event){
     event.preventDefault()
     buttons.innerHTML = null
+
     if(event.target.matches('button')){
         var q = event.target.textContent
         var geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${q}&appid=${appid}`;
