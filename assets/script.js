@@ -91,8 +91,8 @@ var getGeo = function(locations){
 var handler = function(event){
     event.preventDefault()
     var q = document.querySelector('#input')
-    var geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${q.value}&appid=${appid}`;
-    fetch(geoURL)
+    var newURL = `https://api.openweathermap.org/geo/1.0/direct?q=${q.value}&appid=${appid}`;
+    fetch(newURL)
         .then(toJSON)
         .then(getGeo)
 
@@ -103,7 +103,7 @@ var handleCity = function(event){
 
     if(event.target.matches('button')){
         var q = event.target.textContent
-        var geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${q}&appid=${appid}`;
+        var geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${q}&appid=${appid}`;
         fetch(geoURL)
             .then(toJSON)
             .then(getGeo)
